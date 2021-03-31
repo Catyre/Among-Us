@@ -20,7 +20,7 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename, asksaveasfilename
-
+from credentials import EMAIL, PASSWORD
 
 class Player:
     """Class for players in the game."""
@@ -170,8 +170,8 @@ class AmongUsGUI:
         #removeLabels()
         self.imposterCount = self.imposterCombo.get()
 
-        self.playerFile = '/Users/cremocal/Desktop/temp.txt'
-        self.taskFile = '/Users/cremocal/Desktop/tasks.txt'
+        self.playerFile = '/Users/cremocal/Desktop/Python Projects/Among Us/players.txt'
+        self.taskFile = '/Users/cremocal/Desktop/Python Projects/Among Us/tasks.txt'
 
         self.participants = getPlayers(self.playerFile)
         self.tasks = getTasks(self.taskFile)
@@ -287,8 +287,6 @@ def selectImposters(players, imposterCount):
 
 def sendEmail(players, imposters):
     port = 465  # For SSL
-    password = 'AKAK608Waldro'
-    senderEmail = 'acaciaamongus@gmail.com'
 
     imposterString = ''
     for i in range(len(imposters) - 1):
@@ -300,7 +298,7 @@ def sendEmail(players, imposters):
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        server.login(senderEmail, password)
+        server.login(EMAIL, PASSWORD)
 
         for player in players:
             message = """\

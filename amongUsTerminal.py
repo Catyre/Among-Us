@@ -6,6 +6,7 @@
 #   or not they are an impsoter
 
 import math, ssl, smtplib, random
+from credentials import EMAIL, PASSWORD
 
 class Player:
     def __init__(self, name, email, playing):
@@ -97,8 +98,6 @@ def selectImposters(players, imposterCount):
 
 def sendEmail(players, imposters):
     port = 465  # For SSL
-    password = 'AKAK608Waldro'
-    senderEmail = 'acaciaamongus@gmail.com'
 
     imposterString = ''
     for i in range(len(imposters) - 1):
@@ -110,7 +109,7 @@ def sendEmail(players, imposters):
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        server.login(senderEmail, password)
+        server.login(EMAIL, PASSWORD)
 
         for player in players:
             message = """\
