@@ -148,7 +148,7 @@ TASKS: {1}.
 """.format(player.name, player.tasks).encode('ascii', 'ignore')
 
     
-            server.sendmail(senderEmail, player.email, message)
+            server.sendmail(EMAIL, player.email, message)
             print('Tasks and role successfully sent to ' +  player.name + ' (' + player.email + ')')
 
 def main():
@@ -159,14 +159,14 @@ def main():
 
     # Input values
 
-    # roster = input("Enter name of player's .txt file: ")
-    # tasks = input("Enter name of task .txt file: ")
-    # imposterCount = input("How many imposters this round? ")
+    roster = input("Enter name of player's .txt file: ")
+    tasks = input("Enter name of task .txt file: ")
+    imposterCount = input("How many imposters this round? ")
 
     # For debugging
-    roster = 'temp.txt'
-    tasks = 'tasks.txt'
-    imposterCount = 1
+    #roster = 'temp.txt'
+    #tasks = 'tasks.txt'
+    #imposterCount = 1
 
     # Collect list of players and tasks to be done
     participants = getPlayers(roster)
@@ -183,7 +183,7 @@ def main():
 
     # Write the tasks to a TXT file, then send the email to each player
     writeTasks(participants)
-    sendEmail(players, imposters)
+    #sendEmail(players, imposters)
 
    
     # Send players and their tasks, along with playing status, to standard output
